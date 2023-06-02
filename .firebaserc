@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tp1-2023-20f7c": {
+      "hosting": {
+        "TP12023": [
+          "tp1-2023-20f7c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tp1-2023-20f7c"
+  }
+}

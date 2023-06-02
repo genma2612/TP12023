@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center mt-5">
+    <form [formGroup]="formulario" (ngSubmit)="loguear()">
+        <h3>Ingresar</h3>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" formControlName="correo" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+            <small class="invalid"
+                *ngIf="formulario.controls['correo'].errors?.['required'] && formulario.controls['correo'].touched">
+                Ingrese su dirección de correo
+            </small>
+            <small class="invalid"
+                *ngIf="formulario.controls['correo'].errors?.['email'] && formulario.controls['correo'].touched">
+                El formato no es correcto
+            </small>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+            <small class="invalid"
+                *ngIf="formulario.controls['password'].errors?.['required'] && formulario.controls['password'].touched">
+                Ingrese una contraseña
+            </small>
+            <small class="invalid"
+            *ngIf="formulario.controls['password'].errors?.['minlength'] && formulario.controls['password'].touched">
+            La contraseña debe tener al menos 6 caracteres
+        </small>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">Ingresar</button>
+        </div>
+    </form>
+</div>
