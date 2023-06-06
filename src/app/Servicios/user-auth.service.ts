@@ -17,8 +17,7 @@ export class UserAuthService {
 
 
   registrar({ correo, password }: any) {
-    return createUserWithEmailAndPassword(this.auth, correo, password)
-      .then(user => this.guardarEnFirestore(user));
+    return createUserWithEmailAndPassword(this.auth, correo, password);
   }
 
   ingresar({ correo, password }: any) {
@@ -29,11 +28,14 @@ export class UserAuthService {
     return signOut(this.auth);
   }
 
-  guardarEnFirestore(user: any) {
-    let objeto = { correo: user.email, uid: user.uid };
-    console.log(user);
-    //const docRef = doc(this.firestore, 'users', '111112345');
-    //setDoc(docRef, objeto, { merge: true });
+  guardarDocumentoEnFirestore(user: any) { //Para guardar en colección con el mismo ID del usuario
+    let usuario = {mail:user.email, uid:user.uid, rol:'usuario'};
+    const docRef = doc(this.firestore, `users/${user.uid}`)
+    return setDoc(docRef, usuario, { merge: true});
+
+    //const userRef = collection(this.firestore, `users`); //Esto agrega a colección sin ID específica
+    //return addDoc(userRef, usuario);
+
   }
 
 
