@@ -1,1 +1,22 @@
-<p>about works!</p>
+<div class="col-md-5 p-lg-5 mx-auto my-5">
+<div *ngIf="infoGithub" class="mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{infoGithub.avatar_url}}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{infoGithub.name}}</li>
+                    <li class="list-group-item">{{infoGithub.bio}}</li>
+                    <li class="list-group-item"><small class="text-muted">Registrado el {{infoGithub.created_at |
+                        date:'dd/MM/YYYY'}}</small></li>
+                  </ul>
+                <p><button class="btn btn-outline-primary m-2" (click)="irAPagina()">Github</button></p>
+            </div>
+        </div>
+        El juego propio consiste en...
+
+    </div>
+</div>
+</div>

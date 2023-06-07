@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/Clases/usuario';
 import { UserAuthService } from 'src/app/Servicios/user-auth.service';
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-registro',
@@ -27,7 +30,8 @@ export class RegistroComponent {
 
   constructor(
     private authService: UserAuthService,
-    private router: Router) {
+    private router: Router,
+    private spinner: NgxSpinnerService) {
     this.formulario = new FormGroup({
       correo: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -36,21 +40,34 @@ export class RegistroComponent {
 
 
   registrar() {
+    this.spinner.show();
     this.authService.registrar(this.formulario.value)
       .then(
         response => {
-          this.authService.guardarDocumentoEnFirestore(response.user)
+          let usuario: Usuario = { mail: response.user.email, uid: response.user.uid, rol: 'usuario' };
+          this.authService.guardarUsuarioEnFirestore(usuario)
             .then(() => {
-              this.Toast.fire({
-                icon: 'success',
-                title: 'Cuenta creada exitosamente. Ingresando...'
-              })
+              this.authService.saveToLocalstorage(usuario);
               this.authService.ingresar(this.formulario.value)
-              .then(() => this.router.navigate(['home']));
+                .then(() => {
+                  this.Toast.fire({
+                    icon: 'success',
+                    title: 'Cuenta creada exitosamente. Ingresando...'
+                  })
+                  this.spinner.hide();
+                  this.router.navigate(['home'])
+                });
             }
             );
         })
-      .catch(error => alert(error));
+      .catch(error => {
+        this.spinner.hide()
+        this.Toast.fire({
+          icon: 'error',
+          title: error.message
+        })
+        console.info(error)
+      });
   }
 
 }
