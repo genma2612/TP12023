@@ -1,31 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #b41c5c;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Sala de juegos</a>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #b41c5c;">
+    <a class="navbar-brand" routerLink='/bienvenido' >Sala de juegos</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+      <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngIf="this.hayUsuario" class="nav-item">
+          <a class="nav-link" routerLink='/home' routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink='/juegos'>Juegos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink='/about'>Quien soy</a>
+          <a class="nav-link" routerLink='/about' routerLinkActive="active">Quien soy</a>
         </li>
       </ul>
-      <span *ngIf="hayUsuario; else elseBlock" class="navbar-text">
-        <a type="button" routerLink="/login" class="btn btn-outline-primary">Login</a>
-        <a type="button" routerLink="/registro" class="btn btn-outline-info">Registro</a>
+      <span *ngIf="!this.hayUsuario; else elseBlock" class="navbar-text">
+        <a type="button" routerLink="/login" class="btn btn-sm btn-outline-primary">Login</a>
+        <a type="button" routerLink="/registro" class="btn btn-sm btn-outline-info">Registro</a>
       </span>
       <ng-template #elseBlock>
-        <span class="navbar-text">
-          <a type="button" (click)="salir()" class="btn btn-outline-danger">Salir</a>
-        </span>
+        <div *ngIf="this.datosUsuario" class="dropdown">
+          <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <strong>{{this.datosUsuario.mail}}</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="btn dropdown-item" (click)="salir()">Salir</a></li>
+          </ul>
+        </div>
       </ng-template>
     </div>
-  </div>
 </nav>

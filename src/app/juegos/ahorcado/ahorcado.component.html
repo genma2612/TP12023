@@ -1,0 +1,33 @@
+<div class="col-md-6">
+    <div class="card text-left">
+        <div class="card-header">
+            <span *ngFor="let letra of palabraSecretaArraySecreto">
+                {{letra}}
+            </span>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">
+                <img src="../../../assets/{{vidas}}.jpg" style="height: 200px;width: auto;">
+            </h5>
+            <p *ngIf="mostrarTeclado" class="card-text text-center">
+                <span *ngFor="let letra of teclado">
+                    <a type="button" (click)="enviarLetra(letra)" class="btn btn-sm btn-primary">
+                        {{letra}}
+                    </a>
+                    <span *ngIf="letra == 'P'"><br>&nbsp;&nbsp;</span>
+                    <span *ngIf="letra == 'Ñ'"><br>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </span>
+            </p>
+        </div>
+        <div class="card-footer text-muted">
+            Vidas: {{vidas}} - Puntaje: {{puntaje}}
+            <p *ngIf="letrasUsadas.length">Letras utilizadas: <a *ngFor="let letra of letrasUsadas">{{letra}}</a></p>
+        </div>
+        <div class="card-footer text-muted">
+            <span class="text-right">
+                <a name="" id="" class="btn btn-sm btn-primary" (click)="this.reiniciar()" role="button">Reiniciar</a>
+                <a name="" id="" class="btn btn-sm btn-danger" (click)="hacerTrampa()" role="button">Ver palabra</a>
+            </span>
+        </div>
+    </div>
+</div>

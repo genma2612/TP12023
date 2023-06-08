@@ -1,0 +1,11 @@
+.red {
+    color: red;
+}
+
+.carta {
+    height: 120px;
+    width: 85px;
+    max-height:120px;
+    max-width:85px; 
+    border-style:double;
+}

@@ -11,7 +11,6 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NgxSpinnerModule } from "ngx-spinner";
 
 //paginas
@@ -20,8 +19,8 @@ import { RegistroComponent } from './Pages/registro/registro.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { ErrorComponent } from './Pages/error/error.component';
 import { HomeComponent } from './Pages/home/home.component';
-import { NavbarComponent } from './Componentes/navbar/navbar.component';
 import { AboutComponent } from './Pages/about/about.component';
+import { NavbarComponent } from './Componentes/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +30,8 @@ import { AboutComponent } from './Pages/about/about.component';
     LoginComponent,
     ErrorComponent,
     HomeComponent,
-    NavbarComponent,
     AboutComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

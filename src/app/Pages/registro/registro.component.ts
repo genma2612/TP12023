@@ -16,6 +16,11 @@ export class RegistroComponent {
 
   formulario: FormGroup;
 
+  firebaseErrors:any = {
+    'auth/email-already-in-use': 'El correo ingresado ya se encuentra registrado',
+    'auth/invalid-email': 'El correo ingresado no tiene el formato correcto'
+  };
+
   Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -64,7 +69,7 @@ export class RegistroComponent {
         this.spinner.hide()
         this.Toast.fire({
           icon: 'error',
-          title: error.message
+          title: this.firebaseErrors[error.code] || error.code
         })
         console.info(error)
       });

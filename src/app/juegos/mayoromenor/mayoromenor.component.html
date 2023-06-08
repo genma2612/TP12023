@@ -1,0 +1,27 @@
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-header">
+            <span>
+                Puntaje: {{puntaje}}
+            </span>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                <div *ngIf="ultimaCarta" class="carta pl-3">
+                    <div [ngClass]="colorDeCarta(ultimaCarta.icon)">
+                        <p class="align-top">{{ultimaCarta.number | CambiarPorSigno}}</p>
+                        <p class="fs-3 align-middle text-center">{{ultimaCarta.icon}}</p>
+                        <p class="align-bottom text-end">{{ultimaCarta.number | CambiarPorSigno}}</p>
+                    </div>
+                </div>
+            </h5>
+        </div>
+        <div class="card-footer text-muted">
+            <span class="text-right">
+                <a name="" id="" class="btn btn-sm btn-primary" (click)="tomarCarta('menor')" role="button">Es menor</a>
+                <a name="" id="" class="btn btn-sm btn-primary" (click)="tomarCarta('mayor')" role="button">Es mayor</a>
+                <a name="" id="" class="btn btn-sm btn-danger" (click)="verSiguienteCarta()" role="button">Ver siguiente</a>
+            </span>
+        </div>
+    </div>
+</div>

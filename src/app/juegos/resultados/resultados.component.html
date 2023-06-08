@@ -1,0 +1,25 @@
+<div class="table-responsive-md">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Juego</th>
+                <th scope="col">Puntaje</th>
+                <th scope="col">Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let resultado of resultados; let i = index" class="">
+                <td scope="row">{{i+1}}</td>
+                <td scope="row">{{resultado.usuario}}</td>
+                <td>{{resultado.rol}}</td>
+                <td>{{resultado.juego}}</td>
+                <td>{{resultado.puntaje}}</td>
+                <td>{{resultado.fecha}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
