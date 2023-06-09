@@ -21,7 +21,7 @@
         </div>
         <div class="card-footer text-muted">
             Vidas: {{vidas}} - Puntaje: {{puntaje}}
-            <p *ngIf="letrasUsadas.length">Letras utilizadas: <a *ngFor="let letra of letrasUsadas">{{letra}}</a></p>
+            <p *ngIf="letrasUsadas.length">Letras utilizadas: <span *ngFor="let letra of letrasUsadas">{{letra}}</span></p>
         </div>
         <div class="card-footer text-muted">
             <span class="text-right">

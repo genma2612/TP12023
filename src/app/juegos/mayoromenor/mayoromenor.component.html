@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <span>
-                Puntaje: {{puntaje}}
+                Puntaje: {{puntaje}} -- Cartas restantes: {{mazoDeCartasMezclado.length}}
             </span>
         </div>
         <div class="card-body">
@@ -21,6 +21,7 @@
                 <a name="" id="" class="btn btn-sm btn-primary" (click)="tomarCarta('menor')" role="button">Es menor</a>
                 <a name="" id="" class="btn btn-sm btn-primary" (click)="tomarCarta('mayor')" role="button">Es mayor</a>
                 <a name="" id="" class="btn btn-sm btn-danger" (click)="verSiguienteCarta()" role="button">Ver siguiente</a>
+                <a name="" id="" class="btn btn-sm btn-danger" (click)="reiniciar()" role="button">Reiniciar</a>
             </span>
         </div>
     </div>

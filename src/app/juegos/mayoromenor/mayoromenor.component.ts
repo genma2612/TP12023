@@ -33,7 +33,7 @@ export class MayoromenorComponent {
   })
 
   constructor(
-    private userAuth:UserAuthService
+    private userAuth: UserAuthService
   ) {
     this.puntaje = 0;
     for (let index = 0; index < 13; index++) {
@@ -49,7 +49,7 @@ export class MayoromenorComponent {
   }
 
   tomarCarta(apuesta: string) {
-    if (this.mazoDeCartasMezclado.length -1 > 0) {
+    if (this.mazoDeCartasMezclado.length - 1 > 0) {
       let cartaActual = this.ultimaCarta;
       this.ultimaCarta = this.mazoDeCartasMezclado.shift();
       if (apuesta == 'mayor' && cartaActual.number < this.ultimaCarta.number) {
@@ -58,7 +58,7 @@ export class MayoromenorComponent {
       else if (apuesta == 'menor' && cartaActual.number > this.ultimaCarta.number) {
         this.puntaje++;
       }
-      else if (cartaActual.number == this.ultimaCarta.number){
+      else if (cartaActual.number == this.ultimaCarta.number) {
         this.Toast.fire({
           icon: 'warning',
           title: 'Empate no suma puntos :('
@@ -68,7 +68,7 @@ export class MayoromenorComponent {
         this.gameOver("Te equivocaste! Tu puntaje quedó en ");
       }
     }
-    else{
+    else {
       this.gameOver("Ya no quedan cartas! Tu puntaje quedó en ");
     }
   }
@@ -95,7 +95,7 @@ export class MayoromenorComponent {
     });
   }
 
-  gameOver(mensaje:string) {
+  gameOver(mensaje: string) {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -105,14 +105,22 @@ export class MayoromenorComponent {
     this.mostrarBotones = false;
   }
 
-  guardarResultado(){
-    let resultado = {juego:'Mayor o Menor', puntaje:this.puntaje};
+  guardarResultado() {
+    let resultado = { juego: 'Mayor o Menor', puntaje: this.puntaje };
     this.userAuth.guardarResultado(resultado).then(
       response => console.info(response)
     )
-    .catch(
-      (error) => console.info(error) 
-    )
+      .catch(
+        (error) => console.info(error)
+      )
+  }
+
+  reiniciar() {
+    this.puntaje = 0;
+    this.mostrarBotones = true;
+    this.mazoDeCartasMezclado = this.mezclarMazo([...this.mazoDeCartasSeparado.pica, ...this.mazoDeCartasSeparado.corazon,
+    ...this.mazoDeCartasSeparado.diamante, ...this.mazoDeCartasSeparado.trebol]);
+    this.ultimaCarta = this.mazoDeCartasMezclado.shift();
   }
 
 }

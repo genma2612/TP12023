@@ -59,10 +59,17 @@ export class AhorcadoComponent {
   }
 
   reiniciar(): void {
-    let currentUrl = this.ruteador.url;
-    this.ruteador.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.ruteador.navigate([currentUrl]);
-    });
+    this.randNumber = Math.floor(Math.random() * (24 - 0 + 1));
+    this.puntaje = 60;
+    this.vidas = 6;
+    this.letrasUsadas = [];
+    this.palabraSecreta = this.palabras[this.randNumber];
+    this.palabraSecretaArray = this.palabraSecreta.split('');
+    this.palabraSecretaArraySecreto = [];
+    for (const iterator of this.palabraSecretaArray) {
+      this.palabraSecretaArraySecreto.push('_');
+    }
+    this.mostrarTeclado = true;
   }
 
   hacerTrampa(){
