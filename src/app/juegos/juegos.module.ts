@@ -4,6 +4,7 @@ import { SidebarComponent } from '../Componentes/sidebar/sidebar.component';
 import { JuegosRoutingModule } from './juegos-routing.module';
 import { JuegosComponent } from './juegos.component';
 import { ScrollToBottomDirective } from './Directivas/scroll-to-bottom.directive';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ScrollToBottomDirective } from './Directivas/scroll-to-bottom.directive
   ],
   imports: [
     CommonModule,
-    JuegosRoutingModule
+    JuegosRoutingModule,
+    NgxSpinnerModule
   ]
 })
 export class JuegosModule { }

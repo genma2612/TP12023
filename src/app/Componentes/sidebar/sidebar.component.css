@@ -1,8 +1,7 @@
 main {
-    height: 100%;
+    height: 100vh;
     width: 220px;
-    position: fixed;    
+    padding-top: 56px;
     overflow-x: hidden;
-    padding-top: 4%;
     display: block;
 }

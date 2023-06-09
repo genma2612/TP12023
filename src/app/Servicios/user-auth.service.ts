@@ -140,6 +140,14 @@ export class UserAuthService {
     return addDoc(userRef, elementoAGuardar);
   }
 
+  guardarEncuesta(elemento:any){
+    const elementoAGuardar = elemento;
+    elementoAGuardar.usuario = this.usuarioLogueado;
+    elementoAGuardar.fecha = new Date().toString();
+    const userRef = collection(this.firestore, `encuestas`); //Esto agrega a colección sin ID específica
+    return addDoc(userRef, elementoAGuardar);
+  }
+
   traerTodosLosMensajes(){ //detecta cambios
     const colRef = collection(this.firestore,'mensajes');
     const q = query(colRef, orderBy('fecha')); //Ordena por fecha los mensajes

@@ -1,22 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DocumentData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { UserAuthService } from 'src/app/Servicios/user-auth.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
 
   arrayMensajes: any[] = [];
   mensaje = '';
 
-  constructor(private userAuth: UserAuthService) {
+  constructor(private spinner: NgxSpinnerService, private userAuth: UserAuthService) {
     this.userAuth.traerTodosLosMensajes().subscribe(
-      data => this.arrayMensajes = data
-    );
+      data => {
+        this.arrayMensajes = data
+        this.spinner.hide()
+      });
 
     /*
     this.userAuth.traerTodosLosMensajes().then(
@@ -26,6 +29,9 @@ export class ChatComponent {
     )
     console.info(this.arrayMensajes);
     */
+  }
+  ngOnInit(): void {
+    this.spinner.show();
   }
 
   esMiMensaje(mensaje: any) {

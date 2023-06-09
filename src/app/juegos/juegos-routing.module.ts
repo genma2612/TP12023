@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { JuegosComponent } from './juegos.component';
+import { esAdminGuard } from '../Guards/es-admin.guard';
 
 const routes: Routes = [
   { path: '', component: JuegosComponent,
@@ -10,7 +11,9 @@ const routes: Routes = [
       { path: 'mayoromenor', loadChildren: () => import('./mayoromenor/mayoromenor.module').then(m => m.MayoromenorModule) },
       { path: 'preguntados', loadChildren: () => import('./preguntados/preguntados.module').then(m => m.PreguntadosModule) },
       { path: 'juegopropio', loadChildren: () => import('./juegopropio/juegopropio.module').then(m => m.JuegopropioModule) },
-      { path: 'resultados', loadChildren: () => import('./resultados/resultados.module').then(m => m.ResultadosModule) }
+      { path: 'resultados', loadChildren: () => import('./resultados/resultados.module').then(m => m.ResultadosModule) },
+      { path: 'encuesta', loadChildren: () => import('./encuesta/encuesta.module').then(m => m.EncuestaModule) },
+      { path: 'respuestas', loadChildren: () => import('./respuestas/respuestas.module').then(m => m.RespuestasModule), canActivate:[esAdminGuard]  }
     ]},
 ];
 

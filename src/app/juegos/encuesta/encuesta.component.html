@@ -1,0 +1,126 @@
+<div class="container-fluid">
+    <main class="col-md">
+        <div class="">
+            <p class="lead">Por favor, complete sus datos:</p>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-7 col-lg-8">
+                <form [formGroup]="formulario" class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" formControlName="nombre" id="nombre"
+                                placeholder="Nombre" value="" required>
+                            <div>
+                                <small class="invalid"
+                                    *ngIf="formulario.controls['nombre'].errors?.['required'] && formulario.controls['nombre'].touched">
+                                    Ingrese su nombre
+                                </small>
+                                <small class="invalid"
+                                *ngIf="formulario.controls['nombre'].errors?.['pattern'] && formulario.controls['nombre'].dirty">
+                                Ingrese un nombre válido (Sólo letras)
+                            </small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" formControlName="apellido" class="form-control" id="apellido"
+                                placeholder="Apellido">
+                            <div>
+                                <small class="invalid"
+                                    *ngIf="formulario.controls['apellido'].errors?.['required'] && formulario.controls['apellido'].touched">
+                                    Ingrese su apellido
+                                </small>
+                                <small class="invalid"
+                                *ngIf="formulario.controls['apellido'].errors?.['pattern'] && formulario.controls['apellido'].dirty">
+                                Ingrese un apellido válido (Sólo letras)
+                            </small>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" formControlName="edad" id="edad"
+                                placeholder="Edad" value="" required>
+                            <div>
+                                <small class="invalid"
+                                    *ngIf="formulario.controls['edad'].errors?.['required'] && formulario.controls['edad'].touched">
+                                    Ingrese su edad
+                                </small>
+                                <small class="invalid"
+                                *ngIf="formulario.controls['edad'].errors?.['min'] || formulario.controls['edad'].errors?.['max'] && formulario.controls['edad'].dirty">
+                                    La edad debe ser de 18 a 99 años
+                            </small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" formControlName="telefono" id="telefono"
+                                placeholder="Teléfono" value="" required>
+                            <div>
+                                <small class="invalid"
+                                    *ngIf="formulario.controls['telefono'].errors?.['required'] && formulario.controls['telefono'].touched">
+                                    Ingrese su teléfono (de 8 a 10 dígitos)
+                                </small>
+                                <small class="invalid"
+                                *ngIf="formulario.controls['telefono'].errors?.['min'] || formulario.controls['telefono'].errors?.['max'] && formulario.controls['telefono'].dirty">
+                                    El teléfono debe contener de 8 a 10 dígitos
+                            </small>
+                            </div>
+                        </div>
+
+                        <p class="lead">Responda las siguientes preguntas:</p>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-check">
+                                    <input type="checkbox" id="recomendar" formControlName="recomienda"
+                                        class="form-check-input">
+                                    <label class="form-check-label" for="recomendar">Recomendarías la página?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-7">
+                            <label class="form-check-label" for="recomendar">Puntaje:</label>
+                            <div class="btn-group-sm mx-auto" role="group" aria-label="Basic radio toggle button group"
+                                class="form-control" id="puntaje">
+                                <input type="radio" class="btn-check" value="★" formControlName="puntaje" name="puntaje"
+                                    id="btnradio1">
+                                <label class="btn btn-outline-warning" for="btnradio1">★</label>
+                                <input type="radio" class="btn-check" value="★★" formControlName="puntaje"
+                                    name="puntaje" id="btnradio2">
+                                <label class="btn btn-outline-warning" for="btnradio2">★★</label>
+                                <input type="radio" class="btn-check" value="★★★" formControlName="puntaje"
+                                    name="puntaje" id="btnradio3">
+                                <label class="btn btn-outline-warning" for="btnradio3">★★★</label>
+                                <input type="radio" class="btn-check" value="★★★★" formControlName="puntaje"
+                                    name="puntaje" id="btnradio4">
+                                <label class="btn btn-outline-warning" for="btnradio4">★★★★</label>
+                                <input type="radio" class="btn-check" value="★★★★★" formControlName="puntaje"
+                                    name="puntaje" id="btnradio5">
+                                <label class="btn btn-outline-warning" for="btnradio5">★★★★★</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                formControlName="comentario"></textarea>
+                            <div>
+                                <small class="invalid"
+                                    *ngIf="formulario.controls['comentario'].errors?.['required'] && formulario.controls['comentario'].touched">
+                                    Ingrese su opinión
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <button class="w-100 btn btn-primary btn-lg" (click)="guardar()" [disabled]="formulario.invalid" type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+<!--  
+
+ [disabled]="formulario.invalid"
+-->

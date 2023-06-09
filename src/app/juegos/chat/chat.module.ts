@@ -6,6 +6,7 @@ import { ChatComponent } from './chat.component';
 import { FormsModule } from '@angular/forms';
 import { CortarUsuarioPipe } from 'src/app/Pipes/cortar-usuario.pipe';
 import { TiempoDesdeAhoraPipe } from 'src/app/Pipes/tiempo-desde-ahora.pipe';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TiempoDesdeAhoraPipe } from 'src/app/Pipes/tiempo-desde-ahora.pipe';
   imports: [
     CommonModule,
     ChatRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ]
 })
 export class ChatModule { }
