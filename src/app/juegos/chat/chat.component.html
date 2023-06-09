@@ -5,13 +5,21 @@
             Chat de la sala de juegos!
         </div>
         <div id="chat-window" #scrollMe [scrollTop]="scrollMe.scrollHeight" class="card-body scroll">
-            <div *ngFor="let item of arrayMensajes"><p [ngClass]="esMiMensaje(item)"><small>{{item.usuario}} dijo:</small><br><span class="capsula">{{item.mensaje}}</span><br><small>{{item.fecha}}</small></p></div>
+            <div *ngFor="let item of arrayMensajes">
+                <p class="text-end" [ngClass]="{'text-end': esMiMensaje(item)}">
+                    <small>{{item.usuario | cortarUsuario }} dijo:</small><br>
+                    <span [ngClass]="esMiMensaje(item) ? 'badge text-bg-success' : 'badge text-bg-primary'">{{item.mensaje}}</span><br>
+                    <small>{{item.fecha | tiempoDesdeAhora}}</small>
+                </p>
+            </div>
         </div>
         <div class="card-footer text-muted">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" [(ngModel)]="mensaje" placeholder="Escribir mensaje" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" (click)="enviarMensaje()" type="button" id="button-addon2">Enviar</button>
-              </div>              
+                <input type="text" class="form-control" [(ngModel)]="mensaje" placeholder="Escribir mensaje"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" (click)="enviarMensaje()" type="button"
+                    id="button-addon2">Enviar</button>
+            </div>
         </div>
     </div>
 

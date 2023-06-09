@@ -9,6 +9,41 @@
         <li *ngIf="this.hayUsuario" class="nav-item">
           <a class="nav-link" routerLink='/home/ahorcado' routerLinkActive="active">Home</a>
         </li>
+        <!---->
+        <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" *ngIf="this.hayUsuario">
+          <li class="nav-item">
+            <a class="nav-link" routerLink='home/ahorcado' routerLinkActive="active">
+              Ahorcado
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='home/mayoromenor' routerLinkActive="active">
+              Mayor o Menor
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='home/preguntados' routerLinkActive="active">
+              Preguntados
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='home/juegopropio' routerLinkActive="active">
+              Juego Propio
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='home/chat' routerLinkActive="active">
+              Chat
+            </a>
+          </li>
+          <hr>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='home/resultados' routerLinkActive="active">
+              Resultados
+            </a>
+          </li>
+        </ul>
+        <!---->
         <li class="nav-item">
           <a class="nav-link" routerLink='/about' routerLinkActive="active">Quien soy</a>
         </li>

@@ -4,11 +4,15 @@ import { CommonModule } from '@angular/common';
 import { ChatRoutingModule } from './chat-routing.module';
 import { ChatComponent } from './chat.component';
 import { FormsModule } from '@angular/forms';
+import { CortarUsuarioPipe } from 'src/app/Pipes/cortar-usuario.pipe';
+import { TiempoDesdeAhoraPipe } from 'src/app/Pipes/tiempo-desde-ahora.pipe';
 
 
 @NgModule({
   declarations: [
-    ChatComponent
+    ChatComponent,
+    CortarUsuarioPipe,
+    TiempoDesdeAhoraPipe
   ],
   imports: [
     CommonModule,

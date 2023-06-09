@@ -30,9 +30,9 @@ export class ChatComponent {
 
   esMiMensaje(mensaje: any) {
     if (mensaje.usuario == this.userAuth.usuarioLogueado?.mail)
-      return 'green text-end';
+      return true;
     else
-      return 'blue'
+      return false;
   }
 
 

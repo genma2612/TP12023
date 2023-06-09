@@ -135,7 +135,7 @@ export class UserAuthService {
   }
 
   guardarMensaje(elemento:any){
-    const elementoAGuardar = {usuario:this.usuarioLogueado?.mail, fecha:new Date().toLocaleString(), mensaje:elemento}
+    const elementoAGuardar = {usuario:this.usuarioLogueado?.mail, fecha:new Date().toString(), mensaje:elemento}
     const userRef = collection(this.firestore, `mensajes`); //Esto agrega a colección sin ID específica
     return addDoc(userRef, elementoAGuardar);
   }
