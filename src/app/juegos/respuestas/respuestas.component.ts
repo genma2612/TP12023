@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserAuthService } from 'src/app/Servicios/user-auth.service';
+
 
 @Component({
   selector: 'app-respuestas',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./respuestas.component.css']
 })
 export class RespuestasComponent {
+
+  encuestas:any[] = [];
+
+  constructor(private userAuth:UserAuthService){
+    this.userAuth.traerColeccionOrdenada('encuestas', 'fecha').subscribe(
+      data => this.encuestas = data
+    )
+  }
 
 }
