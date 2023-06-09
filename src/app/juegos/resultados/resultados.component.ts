@@ -11,30 +11,11 @@ export class ResultadosComponent implements OnDestroy {
   resultados:any[] = [];
 
   constructor(private userAuth:UserAuthService){
-    /* Como promesa
-    this.userAuth.traerColeccion('resultados').then(
-      response => response.forEach(
-        (doc) => console.info('documento: ', doc.data())
-      )
-      ).catch(
-        error => console.info(error)
-      )
-    */
-   // Como Observable
-    this.listadoResultados();
+    this.userAuth.traerColeccionOrdenada('resultados', 'fecha').subscribe(
+      data => this.resultados = data
+    )
   }
   ngOnDestroy(): void {
-    this.listadoResultados().unsubscribe();
-  }
-
-  listadoResultados(){
-    return this.userAuth.traerColeccion('resultados').subscribe(
-      data => data.forEach(
-        (doc) => {
-          console.info(doc.data());
-          this.resultados.push(doc.data());
-        })
-    );
   }
 
 }

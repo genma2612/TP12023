@@ -4,9 +4,12 @@ import {
   Firestore, 
   addDoc, 
   collection, 
+  collectionData, 
   doc, 
   getDoc, 
   getDocs, 
+  orderBy, 
+  query, 
   setDoc, 
   updateDoc } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
@@ -98,10 +101,16 @@ export class UserAuthService {
     return getDoc(docRef);
   }
 
-  traerColeccion(coleccion:string){
+  traerColeccion(coleccion:string){ //No sirve como observable, la ordenada utiliza collectionData que se actualiza
     const colRef = collection(this.firestore,coleccion);
     return from(getDocs(colRef));
     //return getDocs(colRef); //como promesa
+  }
+
+  traerColeccionOrdenada(coleccion:string, orden:string){
+    const colRef = collection(this.firestore,coleccion);
+    const q = query(colRef, orderBy(orden));
+    return collectionData(q);
   }
 
   getUsuarioLocalstorage(){
@@ -125,5 +134,22 @@ export class UserAuthService {
     //return JSON.parse(localStorage.getItem('usuarioActual')!);
   }
 
+  guardarMensaje(elemento:any){
+    const elementoAGuardar = {usuario:this.usuarioLogueado?.mail, fecha:new Date().toLocaleString(), mensaje:elemento}
+    const userRef = collection(this.firestore, `mensajes`); //Esto agrega a colección sin ID específica
+    return addDoc(userRef, elementoAGuardar);
+  }
 
+  traerTodosLosMensajes(){ //detecta cambios
+    const colRef = collection(this.firestore,'mensajes');
+    const q = query(colRef, orderBy('fecha')); //Ordena por fecha los mensajes
+    return collectionData(q);
+  }
+
+}
+
+export interface Imensaje{
+  mensaje:string;
+  usuario:string;
+  hora:string;
 }

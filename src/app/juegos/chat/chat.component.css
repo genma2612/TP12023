@@ -1,0 +1,17 @@
+.scroll {
+    height: 250px;
+    /*max-height: 250px;*/
+    overflow-y: auto;
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}
+
+.capsula {
+    border-style:solid;
+}

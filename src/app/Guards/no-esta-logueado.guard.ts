@@ -7,7 +7,7 @@ export const noEstaLogueadoGuard: CanActivateFn = (route, state) => {
   //console.info(userAuth.hayUsuarioLogueado);
   //return userAuth.hayUsuarioLogueado;
   if(localStorage.getItem('usuarioActual') != null){
-    inject(Router).navigate(['/home']);
+    inject(Router).navigate(['/home/ahorcado']);
   }
   return true;
 };
