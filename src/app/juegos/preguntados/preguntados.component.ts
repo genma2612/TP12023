@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { first } from 'rxjs';
 import { PreguntasAPIService } from 'src/app/Servicios/preguntas-api.service';
 import { UserAuthService } from 'src/app/Servicios/user-auth.service';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
@@ -16,7 +17,7 @@ export class PreguntadosComponent {
   preguntaActual: any;
   puntaje: number;
   preguntasFlag = false;
-
+  revelar = false;
   Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -40,6 +41,7 @@ export class PreguntadosComponent {
     if(this.preguntasFlag){
       this.generarPreguntas();
     }
+    this.revelar = false;
     this.puntaje = 0;
     this.preguntasRequest.forEach((element: any) => {
       this.preguntas.push(
@@ -48,20 +50,22 @@ export class PreguntadosComponent {
           categoria: element.category,
           pregunta: element.question.text,
           respuestas: this.mezclarRespuestas([
-            { correcta: true, url: element.correctAnswer[0].url },
-            { correcta: false, url: element.incorrectAnswers[0][0].url },
-            { correcta: false, url: element.incorrectAnswers[1][0].url },
-            { correcta: false, url: element.incorrectAnswers[2][0].url }
+            { correcta: true, option: element.correctAnswer},
+            { correcta: false, option: element.incorrectAnswers[0]},
+            { correcta: false, option: element.incorrectAnswers[1]},
+            { correcta: false, option: element.incorrectAnswers[2]}
           ])
         }
       )
     });
     this.preguntaActual = this.preguntas.shift();
+    console.info(this.preguntaActual);
   }
 
   seleccionarRespuesta(respuesta: any) {
     let mensaje = 'Incorrecta!';
     let icono: SweetAlertIcon = 'error';
+    this.verRespuestas();
     if (respuesta.correcta) {
       this.puntaje++;
       mensaje = 'Correcta!';
@@ -74,6 +78,7 @@ export class PreguntadosComponent {
     ).then(()=>{
       if (this.preguntas.length > 0) {
         this.preguntaActual = this.preguntas.shift();
+        this.verRespuestas();
       }
       else{
         this.gameOver();
@@ -82,9 +87,13 @@ export class PreguntadosComponent {
   }
 
   generarPreguntas(){
-    this.preguntasService.getQuestions().subscribe(
+    this.preguntasService.getQuestions().pipe(first()).subscribe(
       respose => this.preguntasRequest = respose
     )
+    /*
+    this.preguntasService.getQuestions().subscribe(
+      respose => this.preguntasRequest = respose
+    )*/
   }
 
   mezclarRespuestas(array: any[]) {
@@ -113,6 +122,10 @@ export class PreguntadosComponent {
       .catch(
         (error) => console.info(error)
       )
+  }
+
+  verRespuestas(){
+    this.revelar = !this.revelar;
   }
 
 }

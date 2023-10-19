@@ -46,6 +46,7 @@ export class ChatComponent implements OnInit {
 
   enviarMensaje() {
     this.userAuth.guardarMensaje(this.mensaje);
+    this.mensaje = '';
   }
 
 }

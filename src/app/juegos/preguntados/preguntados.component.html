@@ -2,13 +2,29 @@
 
     <div class="card">
         <div class="card-header text-center">
-            Preguntados! <span *ngIf="preguntaActual"> -- Puntaje: {{puntaje}} -- Preguntas restantes: {{preguntas.length + 1}}</span>
+            Preguntados! <span *ngIf="preguntaActual"> -- Puntaje: {{puntaje}} -- Preguntas restantes:
+                {{preguntas.length + 1}}</span>
         </div>
         <div id="chat-window" class="card-body">
             <div *ngIf="preguntaActual; else elseBlock">
-                <p class="card-text">
+                <p class="card-text text-center">
                     {{preguntaActual.pregunta}}
                 </p>
+                <div class="row">
+                    <div *ngFor="let respuesta of preguntaActual.respuestas; index as i " class="col-6 text-center">
+
+                        <div [ngClass]="{'text-bg-light': !revelar, 'text-bg-success': revelar && preguntaActual.respuestas[i].correcta, 'text-bg-danger': revelar && !preguntaActual.respuestas[i].correcta}" class="card">
+                            <div class="card-body" (click)="seleccionarRespuesta(preguntaActual.respuestas[i])">
+                                <p role="button" class="card-text">{{preguntaActual.respuestas[i].option}}</p>
+                            </div>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+                <button class="btn btn-dark" (click)="verRespuestas()">Ver Respuestas</button>
+
+
+                <!-- SE HICIERON PAGAS LAS PREGUNTAS CON IMAGENES
                 <div class="row">
                     <div class="col-sm-4">
                         <img class="respuestas" (click)="seleccionarRespuesta(preguntaActual.respuestas[0])" src="{{preguntaActual.respuestas[0].url}}" alt="">
@@ -25,8 +41,12 @@
                         <img class="respuestas" (click)="seleccionarRespuesta(preguntaActual.respuestas[3])" src="{{preguntaActual.respuestas[3].url}}" alt="">
                     </div>
                 </div>
+                -->
             </div>
-            <ng-template #elseBlock><div class="text-center"><img src="../../../assets/preguntados.png" style="max-width: 300px; max-height: 300px;"></div></ng-template>
+            <ng-template #elseBlock>
+                <div class="text-center"><img src="../../../assets/preguntados.png"
+                        style="max-width: 300px; max-height: 300px;"></div>
+            </ng-template>
         </div>
         <div *ngIf="!preguntaActual" class="card-footer text-muted">
             <div class="input-group">
