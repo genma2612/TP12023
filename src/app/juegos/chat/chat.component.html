@@ -10,14 +10,14 @@
                 <p class="text-end" [ngClass]="{'text-end': esMiMensaje(item)}">
                     <small>{{item.usuario | cortarUsuario }} dijo:</small><br>
                     <span [ngClass]="esMiMensaje(item) ? 'badge text-bg-success' : 'badge text-bg-primary'">{{item.mensaje}}</span><br>
-                    <small>{{item.fecha | tiempoDesdeAhora}}</small>
+                    <small>{{item.fecha.toDate() | tiempoDesdeAhora}}</small>
                 </p>
             </div>
         </div>
         <div class="card-footer text-muted">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" [(ngModel)]="mensaje" placeholder="Escribir mensaje"
-                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                    aria-label="Recipient's username" aria-describedby="button-addon2" (keydown.enter)="enviarMensaje()">
                 <button class="btn btn-outline-secondary" (click)="enviarMensaje()" type="button"
                     id="button-addon2">Enviar</button>
             </div>

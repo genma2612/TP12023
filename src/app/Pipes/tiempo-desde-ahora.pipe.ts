@@ -1,4 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { interval, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Pipe({
   name: 'tiempoDesdeAhora'
@@ -8,7 +10,7 @@ export class TiempoDesdeAhoraPipe implements PipeTransform {
   transform(value: string, ...args: unknown[]): unknown {
     if (value) {
       const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
-      if (seconds < 29) // less than 30 seconds ago will show as 'Just now'
+      if (seconds < 3) // less than 30 seconds ago will show as 'Just now'
           return 'Recién';
       const intervals: { [key: string]: number } = {
           'año': 31536000,

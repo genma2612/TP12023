@@ -90,7 +90,7 @@ export class UserAuthService {
 
   guardarResultado(resultado:any){
     let documentoAGuardar = resultado;
-    documentoAGuardar.fecha = new Date().toLocaleString();
+    documentoAGuardar.fecha = Timestamp.fromDate(new Date());
     documentoAGuardar.usuario = this.objUsuarioLogueado?.mail;
     documentoAGuardar.rol = this.objUsuarioLogueado?.rol;
     const userRef = collection(this.firestore, `resultados`); //Esto agrega a colección sin ID específica
@@ -136,7 +136,7 @@ export class UserAuthService {
   }
 
   guardarMensaje(elemento:any){
-    const elementoAGuardar = {usuario:this.usuarioLogueado?.mail, fecha:new Date().toString(), mensaje:elemento}
+    const elementoAGuardar = {usuario:this.usuarioLogueado?.mail, fecha:Timestamp.fromDate(new Date()), mensaje:elemento}
     const userRef = collection(this.firestore, `mensajes`); //Esto agrega a colección sin ID específica
     return addDoc(userRef, elementoAGuardar);
   }

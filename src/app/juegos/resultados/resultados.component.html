@@ -17,7 +17,7 @@
                 <td>{{resultado.rol}}</td>
                 <td>{{resultado.juego}}</td>
                 <td>{{resultado.puntaje}}</td>
-                <td>{{resultado.fecha}}</td>
+                <td>{{resultado.fecha.toDate() | date:'dd/MM/yyyy h:mm:ss a'}}</td>
             </tr>
         </tbody>
     </table>

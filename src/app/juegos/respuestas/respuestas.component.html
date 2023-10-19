@@ -23,7 +23,8 @@
                 <ng-template #elseBlock><td>No</td></ng-template>
                 <td style="color: yellow;">{{encuesta.puntaje}}</td>
                 <td>{{encuesta.comentario}}</td>
-                <td>{{encuesta.fecha | date:'short'}}</td>
+                <td>{{encuesta.fecha.toDate() | date:'dd/MM/yyyy h:mm:ss a'}}</td>
+                <!--td>{{encuesta.fecha | date:'short'}}</td-->
                 <td>{{encuesta.usuario.mail}}</td>
             </tr>
         </tbody>
