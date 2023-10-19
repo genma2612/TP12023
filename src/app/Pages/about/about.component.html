@@ -1,6 +1,6 @@
 <div class="bg-image pt-5">
         <div *ngIf="infoGithub" class="d-flex t-5 justify-content-center aligns-items-center">
-            <div class="card mb-3" style="max-width: 640px;">
+            <div class="card mb-3" style="max-width: 700px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="{{infoGithub.avatar_url}}" class="img-fluid rounded-start" alt="...">
@@ -9,7 +9,9 @@
                         <div class="card-body">
                             <h5 class="card-title">{{infoGithub.name}}</h5>
                             <p class="card-text">{{infoGithub.bio}}</p>
-                            <p class="card-text"><small>juego propio consiste en...</small></p>
+                            <p class="card-text"><small>El juego propio consiste en esquivar a 
+                                los estudiantes molestos: Ya son las 12 y hay que irse a casa. 
+                                Pulsar el boton saltar para... saltar.</small></p>
                             <p class="card-text"><small class="text-muted">Registrado el {{infoGithub.created_at |
                                     date:'dd/MM/YYYY'}}</small></p>
                             <a type="button" class="card-text" (click)="irAPagina()">Github</a>

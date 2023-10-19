@@ -1,1 +1,41 @@
-<p>juegopropio works!</p>
+<div class="container">
+
+<!--
+    <div>{{puntaje}}</div>
+    <div class="marco">
+        <div #octavio id="octavio" class="octavio"></div>
+        <div #cactus id="octavio" class="cactus"></div>
+    </div>
+
+    <a class="btn btn-primary btn-sm " (click)="saltar()" role="button">Saltar</a>
+    <a class="btn btn-primary btn-sm " (click)="empezar()" role="button">Empezar</a>
+
+-->
+
+    <div class="col-7">
+
+        <div class="card">
+            <div class="card-header text-center">
+                <span>Puntaje: {{puntaje}}</span>
+            </div>
+            <div id="chat-window" class="card-body">
+                <div class="marco mx-auto">
+                    <div #octavio id="octavio" class="octavio"></div>
+                    <div #cactus id="cactus" class="cactus"></div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <div *ngIf="sumandoPuntos; else elseBlock" class="input-group">
+                    <a class="btn btn-primary btn-sm " (click)="saltar()" role="button">Saltar</a>
+                </div>
+                <ng-template #elseBlock>
+                    <div class="input-group">
+                        <a class="btn btn-primary btn-sm " (click)="empezar()" role="button">Empezar</a>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+
+    </div>
+
+</div>

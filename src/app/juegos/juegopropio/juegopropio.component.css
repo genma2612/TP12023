@@ -1,0 +1,66 @@
+.marco {
+    width: 600px;
+    height: 200px;
+    border: 1px solid black;
+    /*margin: auto;*/
+    background-image: url('../../../assets/utn.jpg');
+}
+
+.octavio {
+    width: 50px;
+    height: 50px;
+    max-height: 50px;
+    max-width: 50px;
+    position: relative;
+    top:147px;
+    background-image: url('../../../assets/octavio2.png');
+    background-size:  50px;
+}
+
+.saltar {
+    animation: jump 0.3s linear;
+}
+
+@keyframes jump {
+    0% {
+        top:150px;
+    }
+    30% {
+        top:130px;
+    }
+    50%{
+        top:80px;
+    }
+    80%{
+        top:130px;
+    }
+    100%{
+        top:150px;
+    }
+}
+
+.cactus {
+    width: 40px;
+    height: 40px;
+    max-height: 40px;
+    position: relative;
+    top:107px;
+    left:558px;
+    background-color: black;
+    background-image: url('../../../assets/estudiantes.png');
+    background-size:  50px 50px;
+
+}
+
+.mover {
+    animation: movimientoCactus 1s infinite linear;
+}
+
+@keyframes movimientoCactus {
+    0% {
+        left:579px
+    }
+    100% {
+        left:-20px
+    }
+}

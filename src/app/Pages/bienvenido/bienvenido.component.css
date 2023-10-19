@@ -2,9 +2,18 @@
     background-image: url('https://wallpapercave.com/wp/wp2343900.png');
     margin-left: 0% !important;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     background-size: cover;
+    background-color: black;
     /*border: 2px solid #e3985a;*/
+}
+
+.container-fluid{
+    padding: 0 !important;
+}
+
+.body{
+    background-color: black;
 }
 
 .color{
