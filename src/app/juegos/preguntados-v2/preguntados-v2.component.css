@@ -1,0 +1,7 @@
+.respuestas{
+    width: auto; 
+    height: auto; 
+    max-width: 150px;
+    max-height: 150px;
+    border-style:double;
+}

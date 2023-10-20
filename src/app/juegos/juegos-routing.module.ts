@@ -10,6 +10,7 @@ const routes: Routes = [
       { path: 'chat', loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) },
       { path: 'mayoromenor', loadChildren: () => import('./mayoromenor/mayoromenor.module').then(m => m.MayoromenorModule) },
       { path: 'preguntados', loadChildren: () => import('./preguntados/preguntados.module').then(m => m.PreguntadosModule) },
+      { path: 'preguntadosV2', loadChildren: () => import('./preguntados-v2/preguntados-v2.module').then(m => m.PreguntadosV2Module) },
       { path: 'juegopropio', loadChildren: () => import('./juegopropio/juegopropio.module').then(m => m.JuegopropioModule) },
       { path: 'resultados', loadChildren: () => import('./resultados/resultados.module').then(m => m.ResultadosModule) },
       { path: 'encuesta', loadChildren: () => import('./encuesta/encuesta.module').then(m => m.EncuestaModule) },
