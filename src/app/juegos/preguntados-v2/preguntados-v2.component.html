@@ -8,7 +8,7 @@
         <div id="chat-window" class="card-body">
             <div *ngIf="preguntaActual; else elseBlock">
                 <p class="card-text text-center">
-                    {{preguntaActual.pregunta}}
+                    ¿Cuál de las siguientes es la bandera de {{preguntaActual.pregunta}}?
                 </p>
                 <div class="row">
                     <div *ngFor="let respuesta of preguntaActual.respuestas; index as i " class="col-6 text-center">
