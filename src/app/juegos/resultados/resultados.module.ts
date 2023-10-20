@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ResultadosRoutingModule } from './resultados-routing.module';
 import { ResultadosComponent } from './resultados.component';
 
+import { DataTablesModule } from "angular-datatables";
+
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { ResultadosComponent } from './resultados.component';
   ],
   imports: [
     CommonModule,
-    ResultadosRoutingModule
+    ResultadosRoutingModule,
+    DataTablesModule
   ]
 })
 export class ResultadosModule { }

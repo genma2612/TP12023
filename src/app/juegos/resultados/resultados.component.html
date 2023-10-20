@@ -1,5 +1,7 @@
-<div class="table-responsive-md">
-    <table class="table table-dark">
+<div *ngIf="resultados != undefined" class="table-responsive-md">
+    <!--table id="tablaResultados" class="table table-dark"-->
+    <table datatable [dtOptions]="dtOptions"  id="tablaResultados" class="table table-dark">
+
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -22,4 +24,6 @@
         </tbody>
     </table>
 </div>
+
+  
 
